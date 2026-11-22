@@ -1,0 +1,7 @@
+/vendor
+.env
+.env.backup
+.env.production
+.phpunit.result.cache
+*.log
+database/database.sqlite

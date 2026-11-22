@@ -1,0 +1,24 @@
+[phases.setup]
+nixPkgs = [
+    "php82",
+    "php82Extensions.curl",
+    "php82Extensions.mbstring",
+    "php82Extensions.openssl",
+    "php82Extensions.pdo",
+    "php82Extensions.pdo_mysql",
+    "php82Extensions.pdo_pgsql",
+    "php82Extensions.pdo_sqlite",
+    "php82Extensions.zip",
+    "php82Extensions.bcmath",
+    "php82Packages.composer"
+]
+
+[phases.build]
+cmds = [
+    "composer install --no-dev --optimize-autoloader --no-interaction",
+    "mkdir -p storage/framework/cache/data storage/framework/sessions storage/framework/views storage/logs bootstrap/cache",
+    "chmod -R 775 storage bootstrap/cache 2>/dev/null || true"
+]
+
+[start]
+cmd = "sh start.sh"
